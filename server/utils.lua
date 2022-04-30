@@ -2,6 +2,7 @@ ESX = nil
 TriggerEvent(Config.SharedObjectName, function(obj) ESX = obj end)
 
 TriggerEvent('esx_society:registerSociety', 'hookahlounge', 'hookahlounge', 'society_hookahlounge', 'society_hookahlounge', 'society_hookahlounge', {type = 'private'})
+TriggerEvent('society:registerSociety', 'hookahlounge', 'hookahlounge', 'society_hookahlounge', 'society_hookahlounge', 'society_hookahlounge', {type = 'private'})
 
 function getSocietyMoney()
 	local money = nil

@@ -25,6 +25,10 @@ AddEventHandler('ak47_hookahlounge:openbossaction', function()
         menu.close()
         inBossMenu = false
     end)
+    TriggerEvent('society:openBossMenu', 'hookahlounge', function(data, menu)
+        menu.close()
+        inBossMenu = false
+    end)
 end)
 
 RegisterNetEvent('ak47_hookahlounge:notify')

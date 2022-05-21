@@ -86,3 +86,49 @@ function DrawText3D(coords, text, size, font)
         DrawText(x, y)
     end
 end
+
+local started = false
+AddEventHandler('ak47_hookahlounge:smokeenter', function()
+    if not started then
+        started = true
+        local playerPed = PlayerPedId()
+        SetTimecycleModifierStrength(0.0)
+        SetTimecycleModifier('spectator5')
+        SetPedMotionBlur(playerPed, true)
+        Citizen.Wait(1000)
+        SetTimecycleModifierStrength(0.1)
+        Citizen.Wait(1000)
+        SetTimecycleModifierStrength(0.2)
+        Citizen.Wait(1000)
+        SetTimecycleModifierStrength(0.3)
+        Citizen.Wait(1000)
+        SetTimecycleModifierStrength(0.4)
+        Citizen.Wait(1000)
+        SetTimecycleModifierStrength(0.5)
+        Citizen.Wait(1000)
+        ShakeGameplayCam('DRUNK_SHAKE', 2.5)
+        Citizen.Wait(3000)
+        RequestClipSet('MOVE_M@DRUNK@SLIGHTLYDRUNK')
+        while not HasClipSetLoaded('MOVE_M@DRUNK@SLIGHTLYDRUNK') do
+            Citizen.Wait(0)
+        end
+        while inSession > 0 do
+            SetPedMovementClipset(GetPlayerPed(-1), 'MOVE_M@DRUNK@SLIGHTLYDRUNK', true)
+            Citizen.Wait(1000)
+            TriggerEvent('esx_status:remove', 'stress', 5000)
+        end
+        SetTimecycleModifierStrength(0.4)
+        Citizen.Wait(1000)
+        SetTimecycleModifierStrength(0.3)
+        Citizen.Wait(1000)
+        SetTimecycleModifierStrength(0.2)
+        Citizen.Wait(1000)
+        SetTimecycleModifierStrength(0.1)
+        Citizen.Wait(1000)
+        ClearTimecycleModifier()
+        ShakeGameplayCam('DRUNK_SHAKE', 0.0)
+        SetPedMotionBlur(GetPlayerPed(-1), false)
+        ResetPedMovementClipset(GetPlayerPed(-1), 0)
+        started = false
+    end
+end)

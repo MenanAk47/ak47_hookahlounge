@@ -112,7 +112,7 @@ AddEventHandler('ak47_hookahlounge:smokeenter', function()
         while not HasClipSetLoaded('MOVE_M@DRUNK@SLIGHTLYDRUNK') do
             Citizen.Wait(0)
         end
-        while inSession > 0 do
+        while inSession do
             SetPedMovementClipset(GetPlayerPed(-1), 'MOVE_M@DRUNK@SLIGHTLYDRUNK', true)
             Citizen.Wait(1000)
             TriggerEvent('esx_status:remove', 'stress', 5000)
